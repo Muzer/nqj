@@ -1,4 +1,4 @@
-#summary The console class in NQcorelib is an essential part of command line development
+#summary Terminal Handeling Class
 
 = NQcorelib, core.console =
 
