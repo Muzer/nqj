@@ -12,15 +12,28 @@ syntax = cmd	argument argument2 argument3
 List
 
 push = load value to stack
-rfloc = load local to stack
-rfarg = load arg to stack
-wrloc = store to RAM
-wrarg = store to RAM
+rfvar = load pointer of variable to stack
+wrvar = write to variable address in RAM
 call = call method
 pop = pop <n> things
-stack = create new stack
+alloc = allcoate memory for variable
+dup = duplicate last value on stack
+c* = compare - returns true upon certain conditions (see Conditions)
+br* = compare - returns true upon certain conditions (see Conditions)
 snail = ?
 desnail = ?
+
+Conditions
+
+l = less than
+g = greater than
+e = equal to
+le = less than or equal to
+ge = greater than or equal to
+
+Note
+
+n* = NOT (append 'n' to the above)
 
 Stack
 
@@ -56,29 +69,47 @@ namespace hello
 
   reference "corelib"
   {
-    include namespace core
+    include core.console
   }
   
   class one
   {
-    
-    method entrypoint main
+
+    alloc     core.console Console ; allocate memory for local class variable Console
+
+    method entrypoint main ; entroy point method
     {
-      ;	comment!
-      push	int32 600
-      wrloc	i
-      push	string "Hello, World!"
-      call	show(string)
+      call      Console.init() ; initialize Console
+      alloc     int32 i ; allocate memory for i (a 32bit int)
+      push	int32 600 ; puch 600 onto stack
+      dup ; duplicate
+      add ; add
+      push      int32 200 ; push 200 onto stack
+      sub ;  subtract
+      neg ; regate top of stack
+      wrvar	i ; write top of stack to i, and pop
+      ; nee
+      rfvar     i ; push pointer to i onto stack
+      push      int32 0 ; puch zero onto stack
+      brl       woo ; if last value on stack is less than second value on stack, branch to woo
+      ; if error, huh hum.... SNAIL
       snail
+      ; we're nice - really :D
       desnail
+woo:
+      push	string "Hello, World!"
+      call	show(string) /* call 'show' method
+                                takes values off stack and puts in 'shows' local variable 
+                                memory, then pops them from stack */
+      ret ; return
     }
 
     method show(string message)
     {
 
-      ldarg	string message
-      call	core.Console::out(string)
-      ret
+      rfvar     message ; args are locals... GET USED TO IT
+      call	Console.out(string) ; write out with our new cosnole
+      ret ; return
     
     }
 
