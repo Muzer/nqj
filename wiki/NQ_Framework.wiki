@@ -1,0 +1,8 @@
+#summary Information about the whole NQ Framework.
+#labels Featured,Phase-Requirements,Phase-Design
+
+= Introduction =
+The whole framework is called NQ, or (Not Quite). It includes many of things:
+
+  *NQA - Not Quite Assembly
+  *NQJ - Not Quite Jit
