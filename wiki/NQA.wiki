@@ -67,7 +67,7 @@ Examble Program Below:
 namespace hello
 {
 
-  reference "corelib"
+  reference "NQcorelib"
   {
     include core.console
   }
