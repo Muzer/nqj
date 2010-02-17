@@ -79,7 +79,8 @@ namespace hello
 
     method entrypoint main ; entroy point method
     {
-      call      Console.init() ; initialize Console
+      call      (bool)Console.init() ; initialize Console
+      pop ; Get rid of the return value - ideally we would test for failure but this is just an example
       alloc     int32 i ; allocate memory for i (a 32bit int)
       push	int32 600 ; puch 600 onto stack
       dup ; duplicate
@@ -98,13 +99,13 @@ namespace hello
       desnail
 woo:
       push	string "Hello, World!"
-      call	show(string) /* call 'show' method
+      call	()show(string) /* call 'show' method
                                 takes values off stack and puts in 'shows' local variable 
                                 memory, then pops them from stack */
       ret ; return
     }
 
-    method show(string message)
+    method ()show(string message)
     {
 
       rfvar     message ; args are locals... GET USED TO IT
