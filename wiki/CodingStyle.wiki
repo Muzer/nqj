@@ -50,6 +50,13 @@ Always use the C++ libraries where possible.
 using namespace std;
 }}}
 
+==Classes / Variables==
+Always use classes rather than structs unless really really needed.
+
+The whole application must use classes. I.E. the whole program is a class.
+
+Do not use global variables.
+
 ==Files===
 Always end the file with a new line.
 Files must use the UNIX line endings.
