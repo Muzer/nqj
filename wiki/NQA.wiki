@@ -1,0 +1,89 @@
+#summary Intermediate Language - Syntax
+#labels Phase-Design,Phase-Implementation,Project-IL
+
+{{{
+
+/*
+
+Commands
+
+syntax = cmd	argument argument2 argument3
+
+List
+
+push = load value to stack
+rfloc = load local to stack
+rfarg = load arg to stack
+wrloc = store to RAM
+wrarg = store to RAM
+call = call method
+pop = pop <n> things
+stack = create new stack
+snail = ?
+desnail = ?
+
+Stack
+
+note - ALL VALUES ARE HEX!!!
+
+syntax:
+
+type (1 byte), size (2^x), 1 byte
+value
+
+List/Examples
+
+0000 = pointer
+1C000000 = address (32bit [CPU])
+
+0102 = 2^2byte Integer
+49405464 (32bit)
+
+0204 = 2^4byte Floating point
+4.94065645841247x10-324
+
+0300 = String
+Bla\0 (null-terminated)
+
+0400 = bool (false)
+
+0401 = bool (true)
+
+*/
+
+namespace hello
+{
+
+  reference "corelib"
+  {
+    include namespace core
+  }
+  
+  class one
+  {
+    
+    method entrypoint main
+    {
+      ;	comment!
+      push	int32 600
+      wrloc	i
+      push	string "Hello, World!"
+      call	show(string)
+      snail
+      desnail
+    }
+
+    method show(string message)
+    {
+
+      ldarg	string message
+      call	core.Console::out(string)
+      ret
+    
+    }
+
+  }
+
+}
+
+}}}
