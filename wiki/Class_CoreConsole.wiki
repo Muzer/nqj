@@ -1,6 +1,6 @@
-#summary The console class in corelib is an essential part of command line development
+#summary The console class in NQcorelib is an essential part of command line development
 
-= corelib, core.console =
+= NQcorelib, core.console =
 
 core.console
  - public method (bool)init() ; initiate the console window...
