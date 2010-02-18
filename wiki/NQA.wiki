@@ -1,11 +1,11 @@
 #summary Intermediate Language - Syntax
-#labels Phase-Design,Phase-Implementation,Project-IL
+#labels Phase-Design,Phase-Implementation,Project-IL,NQA
 
 {{{
 
 /*
 
-Commands
+== Commands ==
 
 syntax = cmd	argument argument2 argument3
 
@@ -20,6 +20,11 @@ alloc = allcoate memory for variable
 dup = duplicate last value on stack
 c* = compare - returns true upon certain conditions (see Conditions)
 br* = compare - returns true upon certain conditions (see Conditions)
+add = add
+sub = subtract
+mul = multiply
+div = divide
+mod = modulate
 snail = ?
 desnail = ?
 
@@ -30,10 +35,13 @@ g = greater than
 e = equal to
 le = less than or equal to
 ge = greater than or equal to
+and = locgic AND
+or = logic OR
+xor = logic XOR
 
 n* = NOT (append 'n' to the above)
 
-Stack
+== Stack ==
 
 note - ALL VALUES ARE HEX!!!
 
@@ -60,7 +68,7 @@ Bla\0 (null-terminated)
 
 0401 = bool (true)
 
-Examble Program Below:
+== Example Program ==
 
 */
 
