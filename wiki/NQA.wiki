@@ -95,7 +95,7 @@ namespace hello
       brl       woo ; if last value on stack is less than second value on stack, branch to woo
       ; if error, huh hum.... SNAIL
       snail
-      ; we're nice - really :D
+      ; we are nice - really :D
       desnail
 woo:
       push	string "Hello, World!"
