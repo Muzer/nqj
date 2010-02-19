@@ -11,6 +11,7 @@ syntax = cmd	argument argument2 argument3
 
 List
 
+entrypoint = indicator of program entrypoint
 push = load value to stack
 rfvar = load pointer of variable to stack
 wrvar = write to variable address in RAM
@@ -35,6 +36,7 @@ g = greater than
 e = equal to
 le = less than or equal to
 ge = greater than or equal to
+true = is true
 and = locgic AND
 or = logic OR
 xor = logic XOR
@@ -85,8 +87,9 @@ namespace hello
 
     alloc     core.console Console ; allocate memory for local class variable Console
 
-    method entrypoint main ; entroy point method
+    method main ; entroy point method
     {
+      entrypoint
       call      (bool)Console.init() ; initialize Console
       pop ; Get rid of the return value - ideally we would test for failure but this is just an example
       alloc     int32 i ; allocate memory for i (a 32bit int)
