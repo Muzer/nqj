@@ -1,0 +1,12 @@
+#summary A test NQA Prompt written in C#.NET
+#labels NQA,.NET,DotNet,Project-IL
+
+= Introduction =
+
+DotNetNQAPrompt is a prompt and interpretor writen for NQA.
+
+
+= Details =
+
+You can download it here: http://tim32.dnsalias.org/~freddie/NQA/DotNetNQAPrompt.exe
+
