@@ -97,20 +97,16 @@ It is currently unknown how classes are stored in RAM; however, you use a dot to
 
 namespace hello
 {
-
-  reference "NQcorelib"
-  {
-    include core.console
-  }
   
   class one
   {
 
-    alloc     core.console Console ; allocate memory for local class variable Console
-
-    method main ; entroy point method
+    method () main () ; entroy point method
     {
       entrypoint
+      require   core/console
+      alloc     Console core/console ; allocate memory for local class variable Console
+
       call      (bool)Console.init() ; initialize Console
       pop ; Get rid of the return value - ideally we would test for failure but this is just an example
       alloc     int32 i ; allocate memory for i (a 32bit int)
