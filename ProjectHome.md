@@ -1,0 +1,1 @@
+A simple beginners programming language designed for people just getting into programming. It stands for Not Quite Jit.

@@ -1,0 +1,3 @@
+# NQcorelib #
+
+NQcorelib (Not Quite Core Library) is the default/standard/core library which will be aviable for all supported platforms. Most of the Datatypes/Classes/Methods you will access will be held inside NQcorelib.

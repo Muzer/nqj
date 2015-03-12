@@ -1,0 +1,147 @@
+
+```
+
+/*
+
+== Commands ==
+
+syntax = cmd	argument argument2 argument3
+
+List
+
+entrypoint = indicator of program entrypoint
+push = load value to stack
+rfvar = load pointer of variable to stack
+wrvar = write to variable address in RAM
+call = call method
+pop = pop <n> things
+alloc = allcoate memory for variable
+dup = duplicate last value on stack
+c* = compare - returns true upon certain conditions (see Conditions)
+br* = compare - returns true upon certain conditions (see Conditions)
+add = add
+sub = subtract
+mul = multiply
+div = divide
+mod = modulate
+snail = ?
+desnail = ?
+
+Conditions
+
+l = less than
+g = greater than
+e = equal to
+le = less than or equal to
+ge = greater than or equal to
+and = locgic AND
+or = logic OR
+xor = logic XOR
+
+n* = NOT (append 'n' to the above)
+
+== Stack ==
+
+note - ALL VALUES ARE HEX!!!
+
+syntax:
+
+type (1 byte), size (2^x), 1 byte
+value
+
+List/Examples
+
+0000 = pointer
+1C000000 = address (32bit [CPU])
+
+0102 = 2^2byte Integer
+49405464 (32bit)
+
+0204 = 2^4byte Floating point
+4.94065645841247x10-324
+
+0300 = String
+Bla\0 (null-terminated)
+
+0400 = bool (false)
+
+0401 = bool (true)
+
+== Lists and arrays ==
+
+Lists and arrays are equally easy to use.
+
+If you don't know what Lists (Linked lists) and arrays are, look on Wikipedia for the advantages and disadvantages of each.
+
+Each one should have the same features, including resizing.
+
+For lists, it is obvious how resizing is done. For arrays, it is quite a bit slower; the whole array is copied into a new part of RAM, the extra item added to whereever, and then the old array is deallocated. This is so the whole array can be stored in a continuous set of addresses.
+
+It is currently not finalised, but accessing and allocating lists and arrays will be something like:
+
+(list): a~s1~s2~...~sn where s is the subscript. Numbering starts at 0.
+
+(array): a^s1^s2^...^sn (see list).
+
+It is currently undecided how lists and arrays are stored in RAM.
+
+== Classes ==
+
+It is currently unknown how classes are stored in RAM; however, you use a dot to refer to a method or variable of an object, whether it is a pointer or not.
+
+== Example Program ==
+
+*/
+
+namespace hello
+{
+  
+  class one
+  {
+
+    method () main () ; entroy point method
+    {
+      entrypoint
+      require   core/console
+      alloc     Console core/console ; allocate memory for local class variable Console
+
+      call      (bool)Console.init() ; initialize Console
+      pop ; Get rid of the return value - ideally we would test for failure but this is just an example
+      alloc     int32 i ; allocate memory for i (a 32bit int)
+      push	int32 600 ; puch 600 onto stack
+      dup ; duplicate
+      add ; add
+      push      int32 200 ; push 200 onto stack
+      sub ;  subtract
+      neg ; regate top of stack
+      wrvar	i ; write top of stack to i, and pop
+      ; nee
+      rfvar     i ; push pointer to i onto stack
+      push      int32 0 ; puch zero onto stack
+      brl       woo ; if last value on stack is less than second value on stack, branch to woo
+      ; if error, huh hum.... SNAIL
+      snail
+      ; we are nice - really :D
+      desnail
+woo:
+      push	string "Hello, World!"
+      call	()show(string) /* call 'show' method
+                                takes values off stack and puts in 'shows' local variable 
+                                memory, then pops them from stack */
+      ret ; return
+    }
+
+    method ()show(string message)
+    {
+
+      rfvar     message ; args are locals... GET USED TO IT
+      call	Console.out(string) ; write out with our new cosnole
+      ret ; return
+    
+    }
+
+  }
+
+}
+
+```
